@@ -19,17 +19,36 @@ public class PlayerScript : MonoBehaviour {
 			Debug.Log("There is something in front of the object!" + hit.collider.name);
 			if (Input.GetMouseButtonDown(0)) {
 				
-				Component[] components = hit.collider.gameObject.GetComponents(typeof(NorthBoxBehaviour));
-				if (components.Length == 0) {
-					return;
+				Component[] norths = hit.collider.gameObject.GetComponents(typeof(NorthBoxBehaviour));
+				if (norths.Length != 0) {
+					processNorth (norths);
 				}
-				NorthBoxBehaviour consoleButton = (NorthBoxBehaviour)components [0];
-				if (consoleButton.currentColor == Color.red) {
-					consoleButton.currentColor = Color.green;
-				} else {
-					consoleButton.currentColor = Color.red;
+
+				Component[] souths = hit.collider.gameObject.GetComponents(typeof(SouthBoxBehaviour));
+				if (souths.Length != 0) {
+					processSouth (souths);
 				}
+
+
+
+
 			}
+		}
+	}
+
+	void processSouth(Component[] components){
+		SouthBoxBehaviour consoleButton = (SouthBoxBehaviour)components [0];
+		if (consoleButton.currentColor == Color.red) {
+			consoleButton.avertNuclearDisaster ();
+		}
+	}
+
+	void processNorth(Component[] components){
+		NorthBoxBehaviour consoleButton = (NorthBoxBehaviour)components [0];
+		if (consoleButton.currentColor == Color.red) {
+			consoleButton.currentColor = Color.green;
+		} else {
+			consoleButton.currentColor = Color.red;
 		}
 	}
 }
