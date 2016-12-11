@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
+	bool trackDeltas = false;
+	Quaternion previousRotation = Quaternion.identity;
 	void Start () {
 	}
 
@@ -28,12 +30,40 @@ public class PlayerScript : MonoBehaviour {
 				if (souths.Length != 0) {
 					processSouth (souths);
 				}
+				Component[] easts = hit.collider.gameObject.GetComponents(typeof(EastWallBehaviour));
+				if (easts.Length != 0) {
+					trackSlider (true);
+				}
+
 
 
 
 
 			}
 		}
+		if (trackDeltas) {
+			if (Input.GetMouseButtonUp (0)) {
+				trackDeltas = false;
+				previousRotation = Quaternion.identity;
+				EastWallBehaviour.resetSliderPosToCenter ();
+			} else {
+				if (previousRotation == Quaternion.identity) {
+					previousRotation = Camera.main.transform.rotation;
+				}
+
+				float delta = 0.0f;
+				delta = Camera.main.transform.rotation.eulerAngles.y - previousRotation.eulerAngles.y;
+				Debug.Log (Camera.main.transform.rotation.eulerAngles.x+ " "  +
+					Camera.main.transform.rotation.eulerAngles.y + " "  +Camera.main.transform.rotation.eulerAngles.z );
+				EastWallBehaviour.updateSliderPos (delta);
+				previousRotation = Camera.main.transform.rotation;
+			}
+		}
+	}
+
+	void trackSlider (bool track){
+		EastWallBehaviour.resetSliderPosToCenter ();
+		trackDeltas = true;
 	}
 
 	void processSouth(Component[] components){
