@@ -4,7 +4,8 @@ using System.Collections;
 public class ResourceManager : MonoBehaviour {
 
 	public int population;
-	public int power;
+	public float powerOutput;
+	public float heat;
 	public float timeTillLanding;
 	public string landingTimeText;
 	private float nextLandingTime;
@@ -19,9 +20,9 @@ public class ResourceManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		heat = reactorLerp.progress;
 		timeTillLanding = nextLandingTime - Time.time;
 		landingTimeText = landingTimeTextFormat (timeTillLanding);
-		
 	}
 
 
