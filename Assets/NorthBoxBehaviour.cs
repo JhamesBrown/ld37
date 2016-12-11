@@ -2,15 +2,15 @@
 using System.Collections;
 
 public class NorthBoxBehaviour : MonoBehaviour {
-
-	// Use this for initialization
+	public Renderer renderer;
+	public Color currentColor;
 	void Start () {
-	
+		renderer = GetComponent<Renderer> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-	
+		renderer.material.color = currentColor;
 	}
 
 	void OnTriggerEnter(Collider other) {
