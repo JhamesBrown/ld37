@@ -22,7 +22,10 @@ public class reactorLerp : MonoBehaviour {
 		progress += 0.0005f;
 	}
 
-	public void SetProgress(float newProgressValue){
-		progress = newProgressValue;
+	public static void SetProgress(float delta){
+		if (progress - delta < ZeroPos) {
+			return;
+		}
+		progress += delta;
 	}
 }

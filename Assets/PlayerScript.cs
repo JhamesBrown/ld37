@@ -3,7 +3,8 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
-	bool trackDeltas = false;
+	bool trackEastDeltas = false;
+	bool trackSouthDeltas = false;
 	Quaternion previousRotation = Quaternion.identity;
 	void Start () {
 	}
@@ -29,11 +30,18 @@ public class PlayerScript : MonoBehaviour {
 				Component[] souths = hit.collider.gameObject.GetComponents(typeof(SouthBoxBehaviour));
 				if (souths.Length != 0) {
 					processSouth (souths);
+
 				}
 				Component[] easts = hit.collider.gameObject.GetComponents(typeof(EastWallBehaviour));
 				if (easts.Length != 0) {
 					trackSlider (true);
 				}
+				Component[] southFine = hit.collider.gameObject.GetComponents(typeof(SouthBoxFineControlBehaviour));
+				if (southFine.Length != 0) {
+					trackSouthDeltas = true;
+
+				}
+
 
 
 
@@ -41,9 +49,9 @@ public class PlayerScript : MonoBehaviour {
 
 			}
 		}
-		if (trackDeltas) {
+		if (trackEastDeltas) {
 			if (Input.GetMouseButtonUp (0)) {
-				trackDeltas = false;
+				trackEastDeltas = false;
 				previousRotation = Quaternion.identity;
 				EastWallBehaviour.resetSliderPosToCenter ();
 			} else {
@@ -54,8 +62,26 @@ public class PlayerScript : MonoBehaviour {
 				float delta = 0.0f;
 				delta = Camera.main.transform.rotation.eulerAngles.y - previousRotation.eulerAngles.y;
 				Debug.Log (Camera.main.transform.rotation.eulerAngles.x+ " "  +
-					Camera.main.transform.rotation.eulerAngles.y + " "  +Camera.main.transform.rotation.eulerAngles.z );
+					Camera.main.transform.rotation.eulerAngles.y + " "  + Camera.main.transform.rotation.eulerAngles.z );
 				EastWallBehaviour.updateSliderPos (delta);
+				previousRotation = Camera.main.transform.rotation;
+			}
+		}
+		if (trackSouthDeltas) {
+			if (Input.GetMouseButtonUp (0)) {
+				trackSouthDeltas = false;
+				previousRotation = Quaternion.identity;
+
+			} else {
+				if (previousRotation == Quaternion.identity) {
+					previousRotation = Camera.main.transform.rotation;
+				}
+
+				float delta = 0.0f;
+				delta = Camera.main.transform.rotation.eulerAngles.y - previousRotation.eulerAngles.y;
+				Debug.Log (Camera.main.transform.rotation.eulerAngles.x+ " "  +
+					Camera.main.transform.rotation.eulerAngles.y + " "  + Camera.main.transform.rotation.eulerAngles.z );
+				SouthBoxFineControlBehaviour.updateSliderPos (delta);
 				previousRotation = Camera.main.transform.rotation;
 			}
 		}
@@ -63,7 +89,7 @@ public class PlayerScript : MonoBehaviour {
 
 	void trackSlider (bool track){
 		EastWallBehaviour.resetSliderPosToCenter ();
-		trackDeltas = true;
+		trackEastDeltas = true;
 	}
 
 	void processSouth(Component[] components){

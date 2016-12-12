@@ -6,6 +6,8 @@ public class SouthBoxBehaviour : MonoBehaviour {
 	public Renderer renderer;
 	public Color currentColor;
 	float dial = 1.0f;
+	static float ZeroPos = 1.0f;
+	static float MaxPos = -1.0f;
 	void Start () {
 		renderer = GetComponent<Renderer> ();
 		currentColor = Color.red;
