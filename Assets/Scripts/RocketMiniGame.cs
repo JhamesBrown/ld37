@@ -4,6 +4,8 @@ using System.Collections;
 public class RocketMiniGame : MonoBehaviour {
 
 
+	private Animator rocketAni;
+
 	private float timeTillLanding;
 
 	public float targetX;
@@ -11,7 +13,9 @@ public class RocketMiniGame : MonoBehaviour {
 
 	public float playerX;
 
-
+	void Start(){
+		rocketAni = GameObject.Find ("Rocket_01").GetComponent<Animator> ();
+	}
 
 	void Update () {
 		timeTillLanding = ResourceManager.nextLandingTime - Time.time;
@@ -19,6 +23,7 @@ public class RocketMiniGame : MonoBehaviour {
 		if (timeTillLanding < 20f && !isTargetSet) {
 			targetX = Random.Range (0.0f, 1.0f);
 			isTargetSet = true;
+			rocketAni.SetBool("startLandingSeq",true);
 		}
 
 
@@ -28,6 +33,7 @@ public class RocketMiniGame : MonoBehaviour {
 			} else {
 				landingFailed ();
 			}
+			rocketAni.SetBool("startLandingSeq",false);
 		}
 	}
 
