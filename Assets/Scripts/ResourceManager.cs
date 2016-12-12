@@ -4,25 +4,32 @@ using System.Collections;
 public class ResourceManager : MonoBehaviour {
 
 	public static int population;
+
 	public float powerOutput;
 	public float heat;
+
 	public float timeTillLanding;
 	public string landingTimeText;
-	private static float nextLandingTime;
+	public static float nextLandingTime;
+	private float landingPeriod = 90f;
 
 
-	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		population = 120;
 		nextLandingTime = 25f;
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Update () 
+	{
 		heat = reactorLerp.progress;
 		timeTillLanding = nextLandingTime - Time.time;
 		landingTimeText = landingTimeTextFormat (timeTillLanding);
+
+		if (timeTillLanding <= 0.0f) {
+			nextLandingTime = Time.time + landingPeriod;
+		}
 	}
 
 
