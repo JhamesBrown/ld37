@@ -9,7 +9,7 @@ public class ResourceManager : MonoBehaviour {
 
 	public float timeTillLanding;
 	public string landingTimeText;
-	private float landingPeriod = 90f;
+	private float landingPeriod = 35f;
 	public static float nextLandingTime;
 	private float timeSinceMeltdown;
 
@@ -17,7 +17,7 @@ public class ResourceManager : MonoBehaviour {
 	void Start () 
 	{
 		population = 120;
-		nextLandingTime = 25f;
+		nextLandingTime = 35f;
 		
 	}
 

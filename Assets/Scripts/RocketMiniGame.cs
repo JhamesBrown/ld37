@@ -37,6 +37,7 @@ public class RocketMiniGame : MonoBehaviour {
 				landingFailed ();
 			}
 			rocketAni.SetBool("startLandingSeq",false);
+			isTargetSet = false;
 		}
 	}
 
@@ -50,7 +51,7 @@ public class RocketMiniGame : MonoBehaviour {
 	{
 		Debug.Log ("FAILLLLL");
 		Explosion.SetActive (true);
-		ResourceManager.population -= 10;
+		ResourceManager.population -= 50;
 	}
 
 }
