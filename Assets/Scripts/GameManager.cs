@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour 
 {
 	private bool gameIsFinished;
-	public static float gameDuration = 20f;
+	public static float gameDuration = 300f;
 	public float goalPopulation = 400f;
 
 	void Update () 
