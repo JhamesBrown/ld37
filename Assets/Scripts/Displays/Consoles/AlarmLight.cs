@@ -26,9 +26,16 @@ public class AlarmLight : MonoBehaviour {
 			Color finalColor = baseColor * Mathf.LinearToGammaSpace (emission);
 			mat.SetColor ("_Color", Color.red);
 			mat.SetColor ("_EmissionColor", finalColor);
+
+			if (AlarmAudioChild != null) {
+				AlarmAudioChild.SetActive (true);
+			}
 		} else {
 			mat.SetColor ("_Color", Color.gray);
 			mat.SetColor("_EmissionColor", Color.black);
+			if (AlarmAudioChild != null) {
+				AlarmAudioChild.SetActive (false);
+			}
 		}
 
 
