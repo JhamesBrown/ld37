@@ -4,28 +4,33 @@ using System.Collections;
 public class EastWallBehaviour : MonoBehaviour {
 
 
-	static float ZeroPos = 1.0f;
-	static float MaxPos = -1.0f;
-    static float progress = 0;
+	private float ZeroPos;
+	private float MaxPos;
+    private float progress;
 
 	private Collider sliderRail;
 
 	void Start () {
-		resetSliderPosToCenter ();
 		sliderRail = GetComponentInParent<Collider> ();
+		ZeroPos = sliderRail.bounds.min.x * 3f;
+		MaxPos = sliderRail.bounds.max.x * 3f;
 
-		ZeroPos = sliderRail.bounds.min.x;
-		MaxPos = sliderRail.bounds.max.x;
+
+		//resetSliderPosToCenter ();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		transform.localPosition = new Vector3(Mathf.Lerp (ZeroPos, MaxPos, progress),transform.localPosition.y,transform.localPosition.z);
+		progress = Mathf.InverseLerp (MaxPos,ZeroPos, transform.position.x);
 	}
 
+
+	/*
 	public static void resetSliderPosToCenter(){
-		progress = MaxPos + ((ZeroPos - MaxPos) / 2.0f);
+		//progress = MaxPos + ((ZeroPos - MaxPos) / 2.0f);
 	}
+	
+
 	public static bool updateSliderPos(float delta){
 		delta /= 100.0f;
 		Debug.Log ("slider pos delta = " + delta);
@@ -35,7 +40,18 @@ public class EastWallBehaviour : MonoBehaviour {
 		progress += delta;
 		return true;
 	}
+	*/
 
+
+	public void scrubSlider(Vector3 pos)
+	{
+		Vector3 newPos = new Vector3(Mathf.Clamp(pos.x,ZeroPos,MaxPos),transform.position.y,transform.position.z);
+		transform.position = newPos;
+		GetComponentInParent<RocketMiniGame> ().playerX = progress;
+
+	}
+
+	/*
 	void OnTriggerEnter(Collider other) {
 		Debug.Log("East wall collision Enter");
 	}
@@ -45,4 +61,5 @@ public class EastWallBehaviour : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 		Debug.Log("East wall collision Stay");
 	}
+	*/
 }

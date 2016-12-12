@@ -19,36 +19,39 @@ public class PlayerScript : MonoBehaviour {
 		Ray ray = new Ray(Camera.main.transform.position, fwd);
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit, 1.5F)){
-			Debug.Log("There is something in front of the object!" + hit.collider.name);
+			//Debug.Log("There is something in front of the object!" + hit.collider.name);
 			if (Input.GetMouseButtonDown(0)) {
 				
 				Component[] norths = hit.collider.gameObject.GetComponents(typeof(NorthBoxBehaviour));
 				if (norths.Length != 0) {
 					processNorth (norths);
 				}
-
+				/*
 				Component[] souths = hit.collider.gameObject.GetComponents(typeof(SouthBoxBehaviour));
 				if (souths.Length != 0) {
 					processSouth (souths);
-
 				}
+				*/
 				Component[] easts = hit.collider.gameObject.GetComponents(typeof(EastWallBehaviour));
 				if (easts.Length != 0) {
-					trackSlider (true);
+					//trackSlider (true);
+					scrubSlider(hit.collider.gameObject, hit.point);
 				}
 				Component[] southFine = hit.collider.gameObject.GetComponents(typeof(SouthBoxFineControlBehaviour));
 				if (southFine.Length != 0) {
 					trackSouthDeltas = true;
 
 				}
+			}
 
-
-
-
-
-
+			if (Input.GetMouseButton(0)) {
+				Component[] easts = hit.collider.gameObject.GetComponents(typeof(EastWallBehaviour));
+				if (easts.Length != 0) {
+					scrubSlider(hit.collider.gameObject, hit.point);
+				}
 			}
 		}
+		/*
 		if (trackEastDeltas) {
 			if (Input.GetMouseButtonUp (0)) {
 				trackEastDeltas = false;
@@ -67,6 +70,7 @@ public class PlayerScript : MonoBehaviour {
 				previousRotation = Camera.main.transform.rotation;
 			}
 		}
+		*/
 		if (trackSouthDeltas) {
 			if (Input.GetMouseButtonUp (0)) {
 				trackSouthDeltas = false;
@@ -88,8 +92,13 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void trackSlider (bool track){
-		EastWallBehaviour.resetSliderPosToCenter ();
+		// EastWallBehaviour.resetSliderPosToCenter ();
 		trackEastDeltas = true;
+
+	}
+
+	void scrubSlider(GameObject col , Vector3 pos){
+		col.GetComponent<EastWallBehaviour> ().scrubSlider (pos);
 	}
 
 	void processSouth(Component[] components){
