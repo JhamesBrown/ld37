@@ -3,24 +3,15 @@ using System.Collections;
 
 public class ResourceManager : MonoBehaviour {
 
-<<<<<<< ddbe061d7abb99e822e82ade74ae463b6428133f
-	public static int population;
-
-=======
 	public static float population;
->>>>>>> game concept code for population growth with the nuclear reactor
 	public float powerOutput;
 	public float heat;
 
 	public float timeTillLanding;
 	public string landingTimeText;
-<<<<<<< ddbe061d7abb99e822e82ade74ae463b6428133f
-	public static float nextLandingTime;
 	private float landingPeriod = 90f;
-=======
-	private static float nextLandingTime;
+	public static float nextLandingTime;
 	private float timeSinceMeltdown;
->>>>>>> game concept code for population growth with the nuclear reactor
 
 
 	void Start () 
@@ -50,10 +41,10 @@ public class ResourceManager : MonoBehaviour {
 		} else if (heat < 0.8f) {
 			populationGrowth = maxPopGrowth;
 		} else if (heat < 0.99f) {
-			populationGrowth = -(((maxPopGrowth /60)/ 60)/ (1/Time.fixedDeltaTime));
+			populationGrowth = -maxPopGrowth;
 			timeSinceMeltdown = Time.time;
 		} else {
-			populationGrowth = -0.2f - ((Time.time - timeSinceMeltdown));
+			populationGrowth = -maxPopGrowth - ((Time.time - timeSinceMeltdown) * 0.0001f);
 		}
 		population = population + population * populationGrowth;
 
