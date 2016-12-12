@@ -21,9 +21,11 @@ public class Rocket_YSlider : MonoBehaviour {
 
 	public void scrubSlider(Vector3 pos)
 	{
-		Vector3 newPos = new Vector3(Mathf.Clamp(pos.x,ZeroPos,MaxPos),transform.position.y,transform.position.z);
-		transform.position = newPos;
-		GetComponentInParent<RocketMiniGame> ().playerY = progress;
+		if (ResourceManager.currentPowerUse == ResourceManager.powerUse.PoweredRocketLander) {
+			Vector3 newPos = new Vector3 (Mathf.Clamp (pos.x, ZeroPos, MaxPos), transform.position.y, transform.position.z);
+			transform.position = newPos;
+			GetComponentInParent<RocketMiniGame> ().playerY = progress;
+		}
 
 	}
 }
