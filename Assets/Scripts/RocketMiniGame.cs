@@ -9,9 +9,13 @@ public class RocketMiniGame : MonoBehaviour {
 	private float timeTillLanding;
 
 	public float targetX;
+	public float targetY;
 	private bool isTargetSet;
 
+
+
 	public float playerX;
+	public float playerY;
 
 	public GameObject Explosion;
 
@@ -25,13 +29,14 @@ public class RocketMiniGame : MonoBehaviour {
 		if (timeTillLanding < 20f && !isTargetSet) {
 			Explosion.SetActive (false);
 			targetX = Random.Range (0.0f, 1.0f);
+			targetY = Random.Range (0.0f, 1.0f);
 			isTargetSet = true;
 			rocketAni.SetBool("startLandingSeq",true);
 		}
 
 
 		if (timeTillLanding < 0.0f) {
-			if (Mathf.Abs(targetX - playerX) < 0.1f) {
+			if (Mathf.Abs(targetX - playerX) < 0.1f && Mathf.Abs(targetY - playerY) < 0.1f) {
 				landingSuccessful ();
 			} else {
 				landingFailed ();
