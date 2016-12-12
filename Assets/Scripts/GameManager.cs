@@ -5,15 +5,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour 
 {
 	private bool gameIsFinished;
-
-	public bool[] winConditionsMeet = new bool[3];
-
-	void Start () 
-	{
-		for (int i = 0; i < winConditionsMeet.Length; i++)
-			winConditionsMeet [i] = false;
-	}
-	
+	public static float gameDuration = 20f;
+	public float goalPopulation = 400f;
 
 	void Update () 
 	{
@@ -27,16 +20,24 @@ public class GameManager : MonoBehaviour
 		
 		gameIsFinished = checkFinish ();
 
-		if (gameIsFinished)
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+		if (gameDuration - Time.time <= 0.0f) {
+			if (gameIsFinished) {
+				Debug.Log ("GAME WAS WON");
+				SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+			} else {
+				Debug.Log ("GAME HAS BEEN LOST");
+				SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 2);
+			}
+		}
+
 	}
 
 	bool checkFinish()
 	{
-		foreach (bool condition in winConditionsMeet) {
-			if (!condition)
-				return false;
+		if (ResourceManager.population >= goalPopulation) {
+			return true;
+		} else {
+			return false;
 		}
-		return true;
 	}
 }
