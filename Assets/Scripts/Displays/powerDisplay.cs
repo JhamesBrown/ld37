@@ -17,7 +17,7 @@ public class powerDisplay : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		displayText = "POWER OUTPUT \n" + resourceManager.powerOutput +
+		displayText = "Life Support \n" + Mathf.FloorToInt(resourceManager.lifeSupportBattery * 100)  +
 			"%\nHEAT :" + Mathf.FloorToInt(resourceManager.heat * 100f) + "%";
 		GetComponent<TextMesh> ().text = displayText;
 

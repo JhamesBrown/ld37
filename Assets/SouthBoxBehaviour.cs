@@ -15,7 +15,6 @@ public class SouthBoxBehaviour : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
 		currentColor = Color.Lerp (Color.green, Color.red, dial);
 		renderer.material.color = currentColor;
 	}
@@ -24,6 +23,7 @@ public class SouthBoxBehaviour : MonoBehaviour {
 			dial += 0.01f;
 		}
 	}
+
 	public void avertNuclearDisaster(){
 		reactorLerp.progress = 0;
 		dial = 0f;

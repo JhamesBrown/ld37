@@ -120,10 +120,11 @@ public class PlayerScript : MonoBehaviour {
 
 	void processNorth(Component[] components){
 		NorthBoxBehaviour consoleButton = (NorthBoxBehaviour)components [0];
-		if (consoleButton.currentColor == Color.red) {
-			consoleButton.currentColor = Color.green;
+		if (ResourceManager.currentPowerUse == ResourceManager.powerUse.PoweredLifeSupportCharger) {
+			ResourceManager.currentPowerUse = ResourceManager.powerUse.PoweredRocketLander;
 		} else {
-			consoleButton.currentColor = Color.red;
+
+			ResourceManager.currentPowerUse = ResourceManager.powerUse.PoweredLifeSupportCharger;
 		}
 	}
 }
