@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
-	bool trackEastDeltas = false;
+	// bool trackEastDeltas = false;
 	bool trackSouthDeltas = false;
 	Quaternion previousRotation = Quaternion.identity;
 	void Start () {
@@ -91,11 +91,12 @@ public class PlayerScript : MonoBehaviour {
 		}
 	}
 
+	/*
 	void trackSlider (bool track){
-		// EastWallBehaviour.resetSliderPosToCenter ();
+		EastWallBehaviour.resetSliderPosToCenter ();
 		trackEastDeltas = true;
-
 	}
+	*/
 
 	void scrubSlider(GameObject col , Vector3 pos){
 		col.GetComponent<EastWallBehaviour> ().scrubSlider (pos);
