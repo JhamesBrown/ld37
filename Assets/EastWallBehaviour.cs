@@ -9,12 +9,15 @@ public class EastWallBehaviour : MonoBehaviour {
     private float progress;
 
 	private Collider sliderRail;
-
+	public GameObject RocketAudioChild;
+	private Animator rocketAni;
 
 	void Start () {
 		sliderRail = GetComponentInParent<Collider> ();
 		ZeroPos = sliderRail.bounds.min.x * 3f;
 		MaxPos = sliderRail.bounds.max.x * 3f;
+		rocketAni = GameObject.Find ("Rocket_01").GetComponent<Animator> ();
+		RocketAudioChild.SetActive (false);
 
 
 		//resetSliderPosToCenter ();
@@ -22,7 +25,16 @@ public class EastWallBehaviour : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		progress = Mathf.InverseLerp (MaxPos,ZeroPos, transform.position.x);
+		progress = Mathf.InverseLerp (MaxPos, ZeroPos, transform.position.x);
+		if (rocketAni.GetBool("startLandingSeqSound") == true) {
+			if (RocketAudioChild != null) {
+				RocketAudioChild.SetActive (true);
+			} else {
+				if (RocketAudioChild != null) {
+					RocketAudioChild.SetActive (false);
+				}
+			}
+		}
 	}
 
 
