@@ -9,7 +9,7 @@ public class RocketMiniGame : MonoBehaviour {
 	public float targetX;
 	private bool isTargetSet;
 
-	public int playerX;
+	public float playerX;
 
 	private bool gameComplete;
 
