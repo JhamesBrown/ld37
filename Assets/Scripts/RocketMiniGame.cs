@@ -13,6 +13,8 @@ public class RocketMiniGame : MonoBehaviour {
 
 	public float playerX;
 
+	public GameObject Explosion;
+
 	void Start(){
 		rocketAni = GameObject.Find ("Rocket_01").GetComponent<Animator> ();
 	}
@@ -21,6 +23,7 @@ public class RocketMiniGame : MonoBehaviour {
 		timeTillLanding = ResourceManager.nextLandingTime - Time.time;
 
 		if (timeTillLanding < 20f && !isTargetSet) {
+			Explosion.SetActive (false);
 			targetX = Random.Range (0.0f, 1.0f);
 			isTargetSet = true;
 			rocketAni.SetBool("startLandingSeq",true);
@@ -46,6 +49,7 @@ public class RocketMiniGame : MonoBehaviour {
 	void landingFailed()
 	{
 		Debug.Log ("FAILLLLL");
+		Explosion.SetActive (true);
 		ResourceManager.population -= 10;
 	}
 
