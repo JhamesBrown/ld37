@@ -10,6 +10,7 @@ public class EastWallBehaviour : MonoBehaviour {
 
 	private Collider sliderRail;
 
+
 	void Start () {
 		sliderRail = GetComponentInParent<Collider> ();
 		ZeroPos = sliderRail.bounds.min.x * 3f;
@@ -45,9 +46,11 @@ public class EastWallBehaviour : MonoBehaviour {
 
 	public void scrubSlider(Vector3 pos)
 	{
-		Vector3 newPos = new Vector3(Mathf.Clamp(pos.x,ZeroPos,MaxPos),transform.position.y,transform.position.z);
-		transform.position = newPos;
-		GetComponentInParent<RocketMiniGame> ().playerX = progress;
+		if (ResourceManager.currentPowerUse == ResourceManager.powerUse.PoweredRocketLander) {
+			Vector3 newPos = new Vector3 (Mathf.Clamp (pos.x, ZeroPos, MaxPos), transform.position.y, transform.position.z);
+			transform.position = newPos;
+			GetComponentInParent<RocketMiniGame> ().playerX = progress;
+		}
 
 	}
 

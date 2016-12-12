@@ -3,14 +3,18 @@ using System.Collections;
 
 public class NorthBoxBehaviour : MonoBehaviour {
 	public Renderer renderer;
-	public Color currentColor;
 	void Start () {
 		renderer = GetComponent<Renderer> ();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		renderer.material.color = currentColor;
+		if (ResourceManager.currentPowerUse == ResourceManager.powerUse.PoweredLifeSupportCharger) {
+			renderer.material.color = Color.red;
+		} else {
+
+			renderer.material.color = Color.green;
+		}
 	}
 
 	void OnTriggerEnter(Collider other) {
