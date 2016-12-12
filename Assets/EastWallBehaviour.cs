@@ -7,8 +7,15 @@ public class EastWallBehaviour : MonoBehaviour {
 	static float ZeroPos = 1.0f;
 	static float MaxPos = -1.0f;
     static float progress = 0;
+
+	private Collider sliderRail;
+
 	void Start () {
 		resetSliderPosToCenter ();
+		sliderRail = GetComponentInParent<Collider> ();
+
+		ZeroPos = sliderRail.bounds.min.x;
+		MaxPos = sliderRail.bounds.max.x;
 	}
 
 	// Update is called once per frame
