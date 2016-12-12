@@ -19,11 +19,15 @@ public class reactorLerp : MonoBehaviour {
 	}
 
 	void FixedUpdate (){
-		progress += 0.0005f;
+		if ((0.0005f + progress) > 1) {
+			progress = 1;
+		} else {
+			progress += 0.0005f;
+		}
 	}
 
 	public static void SetProgress(float delta){
-		if (progress - delta < ZeroPos) {
+		if ((progress + delta )< 0) {
 			return;
 		}
 		progress += delta;
