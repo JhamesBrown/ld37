@@ -54,7 +54,8 @@ public class RocketMiniGame : MonoBehaviour {
 	{
 		Debug.Log ("FAILLLLL");
 		Explosion.SetActive (true);
-		ResourceManager.population -= 50;
+	
+		ResourceManager.population = Math.max(0, ResourceManager.population - 50);
 	}
 
 }

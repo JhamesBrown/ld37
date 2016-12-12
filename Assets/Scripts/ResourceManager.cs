@@ -44,6 +44,10 @@ public class ResourceManager : MonoBehaviour {
 	}
 
 	void FixedUpdate (){
+
+		if (population < 0) {
+			population = 0;
+		}
 		disasterPopulationModifier (heat);
 		disasterPopulationModifier (1.0f  - lifeSupportBattery);
 		ManagePowerSupply ();
