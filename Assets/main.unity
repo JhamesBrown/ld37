@@ -1191,6 +1191,7 @@ Transform:
   - {fileID: 201595265}
   - {fileID: 1304823556}
   - {fileID: 1854914657}
+  - {fileID: 1520413422}
   m_Father: {fileID: 0}
   m_RootOrder: 7
 --- !u!1 &786065851
@@ -1767,6 +1768,76 @@ Transform:
   - {fileID: 1221588091}
   m_Father: {fileID: 1215164638}
   m_RootOrder: 2
+--- !u!1001 &1202747989
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 743437585}
+    m_Modifications:
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.12086117
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99266946
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -13.829
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_Name
+      value: monitorgameCountdown
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.9600217
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.9600216
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9600209
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1 &1205855382
 GameObject:
   m_ObjectHideFlags: 0
@@ -9712,6 +9783,10 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
+--- !u!4 &1520413422 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: df64a129542e1495f827cc752b699a13, type: 3}
+  m_PrefabInternal: {fileID: 1202747989}
 --- !u!1 &1558670494
 GameObject:
   m_ObjectHideFlags: 0
@@ -15982,3 +16057,99 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
+--- !u!1 &2137190883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2137190884}
+  - 23: {fileID: 2137190887}
+  - 102: {fileID: 2137190886}
+  - 114: {fileID: 2137190885}
+  m_Layer: 0
+  m_Name: countdownTimer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2137190884
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2137190883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.02, y: 0.29, z: 0.02}
+  m_LocalScale: {x: 0.20000008, y: 0.20000003, z: 0.20000009}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1520413422}
+  m_RootOrder: 0
+--- !u!114 &2137190885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2137190883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8534ec8d714744bd1a4b08ccd335c6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!102 &2137190886
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2137190883}
+  m_Text: 'Countdown
+
+    300
+
+'
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 1
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+--- !u!23 &2137190887
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2137190883}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0

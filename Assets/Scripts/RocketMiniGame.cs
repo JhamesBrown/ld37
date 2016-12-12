@@ -12,8 +12,6 @@ public class RocketMiniGame : MonoBehaviour {
 	public float targetY;
 	private bool isTargetSet;
 
-
-
 	public float playerX;
 	public float playerY;
 
