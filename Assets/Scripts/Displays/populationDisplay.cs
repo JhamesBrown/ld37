@@ -16,7 +16,7 @@ public class populationDisplay : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		displayText = "Population : " + ResourceManager.population; 
+		displayText = "Population : " + Mathf.Floor(ResourceManager.population); 
 		GetComponent<TextMesh> ().text = displayText;
 
 	}

@@ -26,12 +26,12 @@ public class PlayerScript : MonoBehaviour {
 				if (norths.Length != 0) {
 					processNorth (norths);
 				}
-				/*
+
 				Component[] souths = hit.collider.gameObject.GetComponents(typeof(SouthBoxBehaviour));
 				if (souths.Length != 0) {
 					processSouth (souths);
 				}
-				*/
+
 				Component[] easts = hit.collider.gameObject.GetComponents(typeof(EastWallBehaviour));
 				if (easts.Length != 0) {
 					//trackSlider (true);
