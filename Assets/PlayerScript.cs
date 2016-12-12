@@ -49,6 +49,11 @@ public class PlayerScript : MonoBehaviour {
 				if (easts.Length != 0) {
 					scrubSlider(hit.collider.gameObject, hit.point);
 				}
+
+				Component[] RocketYSlider = hit.collider.gameObject.GetComponents(typeof(Rocket_YSlider));
+				if (RocketYSlider.Length != 0) {
+					scrubSlider(hit.collider.gameObject, hit.point);
+				}
 			}
 		}
 		/*
@@ -99,7 +104,11 @@ public class PlayerScript : MonoBehaviour {
 	*/
 
 	void scrubSlider(GameObject col , Vector3 pos){
-		col.GetComponent<EastWallBehaviour> ().scrubSlider (pos);
+		if (col.GetComponent<EastWallBehaviour> () != null) {
+			col.GetComponent<EastWallBehaviour> ().scrubSlider (pos);
+		} else {
+			col.GetComponent<Rocket_YSlider>().scrubSlider (pos);
+		}
 	}
 
 	void processSouth(Component[] components){

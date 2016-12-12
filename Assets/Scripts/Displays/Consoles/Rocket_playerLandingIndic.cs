@@ -14,15 +14,15 @@ public class Rocket_playerLandingIndic : MonoBehaviour {
 		// ConsoleScreenGraph = GetComponentInParent<Collider> ();
 		// max = new Vector2 (ConsoleScreenGraph.bounds.max.x, ConsoleScreenGraph.bounds.max.y);
 		// min = new Vector2 (ConsoleScreenGraph.bounds.min.x, ConsoleScreenGraph.bounds.min.y);
-		max.x = 0.45f; // Bounds weren't working so I put this in manually after eyeballing the world space values
-		min.x = -0.45f;
+		max = new Vector2(0.45f,0.45f); // Bounds weren't working so I put this in manually after eyeballing the world space values
+		min = new Vector2(-0.45f, -0.45f);
 	}
 
 	void Update () {
-		PlayerProg.x = GetComponentInParent<RocketMiniGame> ().playerX;
+		PlayerProg = new Vector2(GetComponentInParent<RocketMiniGame> ().playerX, GetComponentInParent<RocketMiniGame> ().playerY);
 
-		pos.x = Mathf.Lerp (min.x, max.x, PlayerProg.x);
+		pos = new Vector2(Mathf.Lerp (min.x, max.x, PlayerProg.x),Mathf.Lerp (min.y, max.y, PlayerProg.y));
 
-		transform.localPosition = new Vector3(pos.x, transform.localPosition.y, transform.localPosition.z);
+		transform.localPosition = new Vector3(pos.x, pos.y, transform.localPosition.z);
 	}
 }
