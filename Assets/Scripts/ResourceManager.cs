@@ -3,18 +3,18 @@ using System.Collections;
 
 public class ResourceManager : MonoBehaviour {
 
-	public int population;
+	public static int population;
 	public float powerOutput;
 	public float heat;
 	public float timeTillLanding;
 	public string landingTimeText;
-	private float nextLandingTime;
+	private static float nextLandingTime;
 
 
 	// Use this for initialization
 	void Start () {
 		population = 120;
-		nextLandingTime = 120f;
+		nextLandingTime = 25f;
 	
 	}
 	
