@@ -3,22 +3,22 @@ using System.Collections;
 
 public class ResourceManager : MonoBehaviour {
 
-	public static int population;
-
+	public static float population;
 	public float powerOutput;
 	public float heat;
 
 	public float timeTillLanding;
 	public string landingTimeText;
-	public static float nextLandingTime;
 	private float landingPeriod = 90f;
+	public static float nextLandingTime;
+	private float timeSinceMeltdown;
 
 
 	void Start () 
 	{
 		population = 120;
 		nextLandingTime = 25f;
-	
+		
 	}
 
 	void Update () 
@@ -30,6 +30,25 @@ public class ResourceManager : MonoBehaviour {
 		if (timeTillLanding <= 0.0f) {
 			nextLandingTime = Time.time + landingPeriod;
 		}
+	}
+
+	void FixedUpdate (){
+		float populationGrowth = 0;
+		float maxPopGrowth = 60; // per minute
+		maxPopGrowth = (((maxPopGrowth /60)/ 60)/ (1/Time.fixedDeltaTime)); // max gorwth per time slice
+		if (heat < 0.2f) {
+			populationGrowth = maxPopGrowth * 0.1f;
+		} else if (heat < 0.8f) {
+			populationGrowth = maxPopGrowth;
+		} else if (heat < 0.99f) {
+			populationGrowth = -maxPopGrowth;
+			timeSinceMeltdown = Time.time;
+		} else {
+			populationGrowth = -maxPopGrowth - ((Time.time - timeSinceMeltdown) * 0.0001f);
+		}
+		population = population + population * populationGrowth;
+
+
 	}
 
 
