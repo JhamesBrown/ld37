@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
 {
 	private bool gameIsFinished;
 	public static float gameDuration = 300f;
-	public float goalPopulation = 400f;
+	public float goalPopulation = 350f;
 	public GameObject helpUI;
+	public GameObject WinUI;
+	public GameObject LoseUI;
 
 	void Update () 
 	{
@@ -28,11 +30,9 @@ public class GameManager : MonoBehaviour
 
 		if (gameDuration - Time.time <= 0.0f) {
 			if (gameIsFinished) {
-				Debug.Log ("GAME WAS WON");
-				SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+				WinUI.SetActive (false);
 			} else {
-				Debug.Log ("GAME HAS BEEN LOST");
-				SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 2);
+				LoseUI.SetActive (false);
 			}
 		}
 
