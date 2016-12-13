@@ -1687,7 +1687,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 15.820001, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1384846700}
-  m_RootOrder: 2
+  m_RootOrder: 6
 --- !u!114 &815622045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2377,6 +2377,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1164763174}
   - 82: {fileID: 1164763175}
+  - 114: {fileID: 1164763176}
   m_Layer: 0
   m_Name: RocketSound
   m_TagString: Untagged
@@ -2407,10 +2408,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 04db7db34ce0ad144a087b7e6ca73070, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   Priority: 128
@@ -2471,6 +2472,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1164763176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1164763173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b6188e9f27ba374898bafa16f85bea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1172895031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,7 +2515,7 @@ Transform:
   m_Children:
   - {fileID: 1350132074}
   m_Father: {fileID: 1384846700}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!114 &1172895033
 MonoBehaviour:
   m_ObjectHideFlags: 0
