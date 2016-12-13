@@ -7,13 +7,19 @@ public class GameManager : MonoBehaviour
 	private bool gameIsFinished;
 	public static float gameDuration = 300f;
 	public float goalPopulation = 400f;
+	public GameObject helpUI;
 
 	void Update () 
 	{
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			Application.Quit ();
 		}
-		if (Input.GetKeyDown(KeyCode.F1)) {
+		if (Input.GetKey(KeyCode.F1)) {
+			helpUI.SetActive (true);
+		} else {
+			helpUI.SetActive (false);
+		}
+		if (Input.GetKeyDown(KeyCode.F2)) {
 			SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
 		}
 
