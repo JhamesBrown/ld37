@@ -61,7 +61,7 @@ public class ResourceManager : MonoBehaviour {
 			lifeSupportBattery -= decrementRate;
 		}
 		float maxBatChargeRate = 2.0f; // per minute
-		maxBatChargeRate = ((maxBatChargeRate /60)/ (1/Time.fixedDeltaTime)); // max gorwth per time slice
+		maxBatChargeRate = ((( 1 + (maxBatChargeRate * heat)) /60)/ (1/Time.fixedDeltaTime)); // max gorwth per time slice
 		if (currentPowerUse == powerUse.PoweredLifeSupportCharger) {
 			if (lifeSupportBattery < 1) {
 				lifeSupportBattery += maxBatChargeRate;
