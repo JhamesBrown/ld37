@@ -31,7 +31,8 @@ public class RocketMiniGame : MonoBehaviour {
 			isTargetSet = true;
 			rocketAni.SetBool("startLandingSeq",true);
 		}
-		else if (timeTillLanding < 10f && timeTillLanding > 0.0f ){
+
+		if (timeTillLanding < 10f && timeTillLanding > 0.0f && isTargetSet){
 			rocketAni.SetBool("startLandingSeqSound",true);
 		}
 

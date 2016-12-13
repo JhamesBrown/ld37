@@ -11,6 +11,7 @@ public class EastWallBehaviour : MonoBehaviour {
 	private Collider sliderRail;
 	public GameObject RocketAudioChild;
 	private Animator rocketAni;
+	private AudioSource rocketSound;
 
 	void Start () {
 		sliderRail = GetComponentInParent<Collider> ();
@@ -18,7 +19,8 @@ public class EastWallBehaviour : MonoBehaviour {
 		MaxPos = sliderRail.bounds.max.x * 3f;
 		rocketAni = GameObject.Find ("Rocket_01").GetComponent<Animator> ();
 		RocketAudioChild.SetActive (false);
-
+		rocketSound = RocketAudioChild.GetComponent<AudioSource> ();
+		rocketSound.Stop ();
 
 		//resetSliderPosToCenter ();
 	}
@@ -29,9 +31,16 @@ public class EastWallBehaviour : MonoBehaviour {
 		if (rocketAni.GetBool("startLandingSeqSound") == true) {
 			if (RocketAudioChild != null) {
 				RocketAudioChild.SetActive (true);
+				if (!rocketSound.isPlaying) {
+					rocketSound.Play ();
+				}
+
 			} else {
 				if (RocketAudioChild != null) {
+					rocketSound.Stop ();
 					RocketAudioChild.SetActive (false);
+
+
 				}
 			}
 		}
